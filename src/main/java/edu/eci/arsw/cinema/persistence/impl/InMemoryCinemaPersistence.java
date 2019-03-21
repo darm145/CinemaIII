@@ -41,7 +41,7 @@ public class InMemoryCinemaPersistence implements CinemaPersitence{
     
     private final Map<String,Cinema> cinemas=new HashMap<>();
 
-    public InMemoryCinemaPersistence() {
+    public InMemoryCinemaPersistence() throws CinemaException, CinemaPersistenceException {
         //load stub data
         String functionDate = "2018-12-18 15:30";
         String functionDate2 = "2018-12-18 17:30";
@@ -63,11 +63,21 @@ public class InMemoryCinemaPersistence implements CinemaPersitence{
         cinemas.put("cineColombia", c);
         functions=new ArrayList<>();
         CinemaFunction funct6 = new CinemaFunction(new Movie("Miedo","Horror"),functionDate);
+        
         CinemaFunction funct7 = new CinemaFunction(new Movie("Spider Man","Action"),functionDate2);
         functions.add(funct6);
         functions.add(funct7);
         c=new Cinema("cineMark",functions);
         cinemas.put("cineMark", c);
+        buyTicket( 0,  0,  "cineMark",  functionDate,"Miedo");
+        buyTicket( 1,  1,  "cineMark",  functionDate,"Miedo");
+        buyTicket( 2,  2,  "cineMark",  functionDate,"Miedo");
+        buyTicket( 3,  3,  "cineMark",  functionDate,"Miedo");
+        buyTicket( 4,  4,  "cineMark",  functionDate,"Miedo");
+        buyTicket( 5,  5,  "cineMark",  functionDate,"Miedo");
+        buyTicket( 6,  6,  "cineMark",  functionDate,"Miedo");
+        
+        
     }    
 
     @Override

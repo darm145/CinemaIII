@@ -12,24 +12,33 @@
 	<script src="js/api.js"></script>
     <link rel="stylesheet"
       href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+<style>
+body{
+ background-image:url(/imagenes/wallpaper.jpg);
+
+   background-repeat:no-repeat;
+
+   background-size:cover;
+   }
+</style>
 </head>
 <body>
-
-	<h1>Cinemas</h1>
+	 
+	<h1 style="color:yellow">Cinemas</h1>
 	<input id="cinema" type="text" size="50">
 	<input type="submit" value="Enviar" onclick="app.getCinemaByName(cinema.value)">
 	<p> 
-	<table id="CinemaTable" style="width:100%" border="1">
+	<table style="background-color:black" id="CinemaTable" style="width:100%" border="1">
 	  <tr>
-	    <th>Cinema</th>
-	    <th>Function</th> 
-	    <th>sillas Disponibles</th>
-	    <th>fecha</th>
-	    <th> ver sillas </th>
+	    <th style="color:yellow">Cinema</th>
+	    <th style="color:red">Function</th> 
+	    <th style="color:yellow">sillas Disponibles</th>
+	    <th style="color:red">fecha</th>
+	    <th style="color:yellow"> ver sillas </th>
 	  </tr>
 	</table>
 	
-<button type="button" id="0" class="btn btn-primary" onclick="app.findLocation(0)" data-toggle="modal" data-target="#ModalSillas">Ver</button>
+
 <!-- Modal -->
 <div class="modal fade" id="ModalSillas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -50,5 +59,6 @@
     </div>
   </div>
 </div>
+
 </body>
 </html>
