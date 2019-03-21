@@ -65,6 +65,7 @@ public class CinemaServices {
     public List<Movie> filtrar(String cinema,String date,String category){
 		return cps.filtrar(cinema, date, category);
     }
+   
 
 
 }

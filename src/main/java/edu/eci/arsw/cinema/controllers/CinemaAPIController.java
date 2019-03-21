@@ -99,6 +99,27 @@ public class CinemaAPIController {
 	    }    
 		
 	}
+	@RequestMapping(value="/cinema/{name}/{date}/{moviename}/seats",method = RequestMethod.GET)
+	public ResponseEntity<?> getSeatsPelicula(@PathVariable String name,@PathVariable String date,@PathVariable String moviename){
+		try {
+			synchronized(cp) {
+				List<CinemaFunction> temp=cp.getFunctionsbyCinemaAndDate(name, date);
+				for(CinemaFunction c:temp) {
+					Movie m=c.getMovie();
+					if(m.getName().equals(moviename)) {
+						
+						return new ResponseEntity<>(c.getSeats(),HttpStatus.ACCEPTED);
+					}
+				}
+			}
+			
+	        throw new Exception("no se puede encontrar una pelicula con los parametros suministrados");
+	    } catch (Exception ex) {
+	        Logger.getLogger(CinemaAPIController.class.getName()).log(Level.SEVERE, null, ex);
+	        return new ResponseEntity<>("Error 404 "+ex.getMessage(),HttpStatus.NOT_FOUND);
+	    }    
+		
+	}
 
 	@RequestMapping(value="/cinema/{name}",method = RequestMethod.POST)	
 	public ResponseEntity<?> manejadorPostRecursoCinema(@RequestBody CinemaFunction c,@PathVariable String name){
